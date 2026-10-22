@@ -1,0 +1,85 @@
+@page "/"
+@inject HttpClient Http
+
+<PageTitle>Personajes de Rick y Morty</PageTitle>
+
+<h1>Personajes de Rick y Morty</h1>
+
+@if (cargando)
+{
+    <p>Cargando personajes...</p>
+}
+
+@if (error != null)
+{
+    <p class="error">@error</p>
+}
+
+@if (!cargando && datos != null)
+{
+    <p>
+        Total: @datos.Info.Count personajes - Pagina @paginaActual de @datos.Info.Pages
+    </p>
+
+    <div class="lista">
+        @foreach (var personaje in datos.Results)
+        {
+            <div class="tarjeta">
+                <img src="@personaje.Image" alt="@personaje.Name" />
+                <h3>@personaje.Name</h3>
+                <p>Estado: @personaje.Status</p>
+                <p>Especie: @personaje.Species</p>
+                <p>Genero: @personaje.Gender</p>
+                <p>Origen: @personaje.Origin.Name</p>
+                <p>Episodios: @personaje.Episode.Count</p>
+            </div>
+        }
+    </div>
+
+    <div class="paginacion">
+        <button @onclick="PaginaAnterior" disabled="@(datos.Info.Prev == null)">Anterior</button>
+        <button @onclick="PaginaSiguiente" disabled="@(datos.Info.Next == null)">Siguiente</button>
+    </div>
+}
+
+@code {
+    private Characters? datos;
+    private int paginaActual = 1;
+    private bool cargando = true;
+    private string? error;
+
+    // Se ejecuta cuando la pagina se abre por primera vez
+    protected override async Task OnInitializedAsync()
+    {
+        await CargarPagina(1);
+    }
+
+    // Llama a nuestro servidor (api/personajes) y guarda la respuesta en "datos"
+    private async Task CargarPagina(int pagina)
+    {
+        cargando = true;
+        error = null;
+
+        try
+        {
+            datos = await Http.GetFromJsonAsync<Characters>($"api/personajes?page={pagina}");
+            paginaActual = pagina;
+        }
+        catch (HttpRequestException)
+        {
+            error = "No se pudo cargar la lista de personajes. Intenta de nuevo.";
+        }
+
+        cargando = false;
+    }
+
+    private async Task PaginaAnterior()
+    {
+        await CargarPagina(paginaActual - 1);
+    }
+
+    private async Task PaginaSiguiente()
+    {
+        await CargarPagina(paginaActual + 1);
+    }
+}

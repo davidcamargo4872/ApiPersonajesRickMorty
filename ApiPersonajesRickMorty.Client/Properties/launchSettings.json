@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "ApiPersonajesRickMorty.Client": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:59603;http://localhost:59604"
+    }
+  }
+}

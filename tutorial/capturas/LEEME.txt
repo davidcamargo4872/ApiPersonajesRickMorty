@@ -1,0 +1,17 @@
+Aqui van las capturas de pantalla (PNG o JPG) con estos nombres:
+
+captura_1.png  -> Postman o navegador con el JSON de https://rickandmortyapi.com/api/character
+captura_2.png  -> Explorador de soluciones con los 3 proyectos (Client, Server y Shared)
+captura_3.png  -> La app corriendo en la pagina 1 (boton Anterior deshabilitado)
+captura_4.png  -> La app en la pagina 2 (los dos botones activos)
+captura_5.png  -> El navegador abierto en https://localhost:7100/api/personajes?page=2 (el JSON de nuestro servidor)
+captura_6.png  -> F12 > pestana Red (Network) mostrando la peticion api/personajes?page=1
+captura_7.png  -> El repositorio ya subido a GitHub (lista de archivos)
+
+Despues, desde la carpeta "tutorial", ejecutar:
+
+    pip install reportlab pillow
+    python generar_pdf.py
+
+Se crea el archivo Tutorial_Blazor_RickAndMorty.pdf con las capturas pegadas en su lugar.
+Si falta alguna captura, en el PDF queda un recuadro vacio con el nombre de la que falta.

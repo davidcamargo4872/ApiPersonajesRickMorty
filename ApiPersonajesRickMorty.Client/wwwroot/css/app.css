@@ -1,0 +1,97 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background-color: #f2f2f2;
+    color: #222;
+}
+
+.contenedor {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+header {
+    padding: 15px 0;
+    border-bottom: 1px solid #bbb;
+}
+
+footer {
+    padding: 15px 0;
+    margin-top: 20px;
+    border-top: 1px solid #bbb;
+    font-size: 0.85em;
+    color: #555;
+}
+
+h1 {
+    font-size: 1.6em;
+}
+
+.lista {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.tarjeta {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+.tarjeta img {
+    width: 100%;
+    border-radius: 4px;
+}
+
+.tarjeta h3 {
+    margin: 8px 0;
+    font-size: 1.05em;
+}
+
+.tarjeta p {
+    margin: 3px 0;
+    font-size: 0.9em;
+}
+
+.paginacion {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.paginacion button {
+    padding: 8px 20px;
+    margin: 0 5px;
+    border: 1px solid #888;
+    background-color: #e6e6e6;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.paginacion button:disabled {
+    color: #999;
+    cursor: not-allowed;
+}
+
+.error {
+    color: #8a1c1c;
+}
+
+#blazor-error-ui {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #f5f0c8;
+    border-top: 1px solid #999;
+    box-sizing: border-box;
+}
+
+#blazor-error-ui .dismiss {
+    cursor: pointer;
+    float: right;
+}
